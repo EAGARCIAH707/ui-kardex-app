@@ -11,7 +11,6 @@ export class MainService {
   }
 
   public get(endpoint: string, options = {}): Observable<any> {
-    console.log(options);
     return this.httpClient.get(endpoint, options).pipe(map(this.extractData),
       catchError(this.handleError));
   }
