@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.loginService.login(this.signInDTO).subscribe(res => {
       this.openSnackBar('Login Exitoso!', 'Ok');
+      console.log('body', res.body);
+      console.log('res', res);
       localStorage.setItem('token', res.toString());
       console.log(res.toString());
       this.router.navigate(['/kardex']);
