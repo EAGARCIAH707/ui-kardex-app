@@ -36,7 +36,7 @@ export class MainService {
   protected extractData(res: HttpResponse<any>) {
     try {
       const token = res.headers.get('token');
-      console.log('Headers');
+      console.log('Headers',res.headers);
       if (token) {
         localStorage.setItem('token', token);
       }
