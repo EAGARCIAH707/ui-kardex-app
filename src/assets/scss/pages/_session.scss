@@ -1,0 +1,22 @@
+
+.register-image {
+  background-image: url("/assets/images/register.jpg");
+  background-size: cover;
+  padding: 18rem 0;
+}
+
+@media(min-width:960px) {
+  .thank-you-card {
+    margin-top: -60px;
+  }
+
+  .form-margin {
+    margin-left: -40px;
+  }
+}
+
+@media(max-width:959px) {
+  .form-img {
+    display: none;
+  }
+}

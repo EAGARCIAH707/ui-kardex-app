@@ -1,0 +1,43 @@
+<div *ngIf="_in">
+  <mat-card-content>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="center">
+      <div fxLayout="column">
+        <h4 class="text-center">Agregar entrada o devolucion de entrada</h4>
+        <form [formGroup]="_in">
+          <mat-form-field class="w-90 text-center ">
+            <input matInput type="email" placeholder="Cantidad" formControlName="quantity">
+            <mat-error *ngIf="_in.get('quantity').hasError('required') && _in.get('quantity').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+            <mat-error *ngIf="_in.get('quantity').hasError('pattern') && _in.get('quantity').touched">Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Referencia" formControlName="observation">
+            <mat-error *ngIf="_in.get('observation').hasError('required') && _in.get('observation').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Valor Unitario (vacio para tomar valor unitario actual)"
+                   formControlName="unitValue">
+          </mat-form-field>
+          <div>
+            <mat-form-field class="w-90 text-center">
+              <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <button mat-raised-button class="button-md " color="accent" (click)="submitIn()">Guardar</button>
+          <button mat-raised-button class="button-md " color="accent" (click)="hidden()">Volver</button>
+          <button mat-raised-button class="button-md " color="accent" (click)="_in.reset()">Limpiar</button>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</div>
+

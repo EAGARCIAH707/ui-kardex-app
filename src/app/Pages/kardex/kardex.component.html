@@ -1,0 +1,129 @@
+<div class="container container-height">
+  <h4 class="text-center">Informacion del Producto</h4>
+  <mat-label>Productos</mat-label>
+  <mat-select (valueChange)="changeProduct($event)">
+    <mat-option class="mat-color" *ngFor="let item of kardex$" [value]="item">
+      {{item.productId.productId}} - {{item.productId.name}}
+    </mat-option>
+  </mat-select>
+  <br> <br>
+  <mat-card>
+    <div class="container" *ngIf="selectProduct">
+      <div class="mb-3 mbr">
+        <label class="w-90 text-center">Name:</label>
+        <span class="mbr">{{selectProduct.productId.name}}</span>
+      </div>
+      <div class="mb-3 mbr">
+        <label>Quantity:</label>
+        <span class="mbr">{{selectProduct.quantity}}</span>
+      </div>
+      <div class="mb-3 mbr">
+        <label>Existencia Minima:</label>
+        <span class="mbr">{{selectProduct.minimumStock}}</span>
+      </div>
+      <div class="mb-3 mbr">
+        <label>Existencia Maxima:</label>
+        <span class="mbr">{{selectProduct.maximumStock}}</span>
+      </div>
+    </div>
+  </mat-card>
+
+
+  <div class="container-height">
+    <mat-card>
+      <h4 class="text-center">Operaciones</h4>
+      <div class="container">
+        <button color="accent" class="button-lg mb-3 mbr" mat-raised-button (click)="openDialog(1)">
+          Agregar Producto
+        </button>
+        <button color="accent" [disabled]="!selectProduct" class="button-lg mb-3 mbr" mat-raised-button
+                (click)="openDialog(2)">
+          Agregar Entrada
+        </button>
+        <button color="accent" [disabled]="!selectProduct" class="button-lg mb-3 mbr" mat-raised-button
+                (click)="openDialog(3)">
+          Agregar Salida
+        </button>
+        <button color="accent" [disabled]="!selectProduct" class="button-lg mb-3 mbr" mat-raised-button
+                (click)="seeIn()">
+          Ver entradas
+        </button>
+        <button color="accent" [disabled]="!selectProduct" class="button-lg mb-3 mbr" mat-raised-button
+                (click)="seeOut()">
+          Ver salidas
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="container-height" *ngIf="recordsTable.length > 0">
+    <mat-table [dataSource]="recordsTable" class="mat-elevation-z8">
+      <ng-container matColumnDef="fecha">
+        <mat-header-cell *matHeaderCellDef> Fecha</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center">{{element.fecha | date:'MMMM d, y'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="detalle">
+        <mat-header-cell *matHeaderCellDef> Detalle</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.detalle}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad1">
+        <mat-header-cell *matHeaderCellDef> Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.cantidad1}} </mat-cell>
+      </ng-container>
+
+      <ng-container class="blue-col" matColumnDef="valorUnitario1">
+        <mat-header-cell *matHeaderCellDef>Valor Unitario</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+                  class="text-center"> {{element.valorUnitario1 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valorTotal1">
+        <mat-header-cell *matHeaderCellDef>Valor Total</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.valorTotal1 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad2">
+        <mat-header-cell *matHeaderCellDef> Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.cantidad2}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valorUnitario2">
+        <mat-header-cell *matHeaderCellDef>Valor Unitario</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+                  class="text-center"> {{element.valorUnitario2 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valorTotal2">
+        <mat-header-cell *matHeaderCellDef>Valor Total</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.valorTotal2 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cantidad3">
+        <mat-header-cell *matHeaderCellDef> Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.cantidad3}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valorUnitario3">
+        <mat-header-cell *matHeaderCellDef>Valor Unitario</mat-header-cell>
+        <mat-cell *matCellDef="let element"
+                  class="text-center"> {{element.valorUnitario3 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valorTotal3">
+        <mat-header-cell *matHeaderCellDef>Valor Total</mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.valorTotal3 | currency:currency}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="text-center"></mat-row>
+    </mat-table>
+  </div>
+</div>
+
+<div *ngIf="recordsTable?.length==0" class="text-center center tableEmpty col-12">
+  <i class="fa fa-inbox fa-5x" aria-hidden="true"></i>
+  <h4>No hay registros para mostrar</h4>
+</div>
+

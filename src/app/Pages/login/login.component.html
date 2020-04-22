@@ -1,0 +1,36 @@
+<div class="inner-container bg-white section-gap-lg">
+  <div class="container">
+    <div fxLayout='row wrap' fxLayoutAlign="center center">
+      <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="80" fxFlex.lg="70" fxFlex.xl="70">
+        <div fxLayout='row wrap' fxLayoutAlign="center center">
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+            <div class="form-img register-image">
+            </div>
+          </div>
+          <div fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50">
+            <mat-card class="register-form form-margin">
+              <h4>Ingrese Credenciales</h4>
+              <form #signInForm="ngForm" (ngSubmit)="signIn()">
+                <div class="mb-4">
+                  <mat-form-field class="w-100">
+                    <input matInput type="email" placeholder="Usuario" name="email"
+                           [(ngModel)]="signInDTO.email" required>
+                  </mat-form-field>
+                  <mat-form-field class="w-100">
+                    <input matInput type="password" placeholder="Contraseña"
+                           name="password" [(ngModel)]="signInDTO.password" required>
+                  </mat-form-field>
+                </div>
+                <button type="submit" [disabled]="!signInForm.valid" color="primary" class="button-lg mb-3"
+                        mat-raised-button> Enviar
+                </button>
+              </form>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

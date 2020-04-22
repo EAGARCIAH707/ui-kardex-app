@@ -1,0 +1,64 @@
+<div *ngIf="product">
+  <mat-card-content>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="center">
+      <div fxLayout="column">
+        <h4 class="text-center"> Agregar Informacion del Producto</h4>
+        <form [formGroup]="product">
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Nombre" formControlName="name">
+            <mat-error *ngIf="product.get('name').hasError('required') && product.get('name').touched">Este campo
+              no
+              debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Referencia" formControlName="reference">
+            <mat-error *ngIf="product.get('reference').hasError('required') && product.get('reference').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Costo" formControlName="purchasePrice">
+            <mat-error
+              *ngIf="product.get('purchasePrice').hasError('required') && product.get('purchasePrice').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="w-90 text-center">
+            <input matInput placeholder="Precio Venta" formControlName="salePrice">
+            <mat-error *ngIf="product.get('salePrice').hasError('salePrice') && product.get('salePrice').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-90 text-center ">
+            <input matInput placeholder="Descripcion" formControlName="description">
+            <mat-error
+              *ngIf="product.get('description').hasError('required') && product.get('description').touched">
+              Este campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-90 text-center ">
+            <input matInput type="email" placeholder="Cantidad" formControlName="quantity">
+            <mat-error *ngIf="product.get('quantity').hasError('required') && product.get('quantity').touched">
+              Este
+              campo no debe estar vacío.
+            </mat-error>
+            <mat-error *ngIf="product.get('quantity').hasError('pattern') && product.get('quantity').touched">Este
+              campo no debe estar vacío.
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button class="button-md " color="accent" (click)="submitProduct()">Guardar</button>
+          <button mat-raised-button class="button-md " color="accent" (click)="hidden()">Volver</button>
+          <button mat-raised-button class="button-md " color="accent" (click)="initForm()">Limpiar</button>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</div>
+

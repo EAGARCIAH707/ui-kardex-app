@@ -1,0 +1,10 @@
+// Shop Card
+body .mat-card .mat-card-image {
+	max-width: inherit;
+	border-bottom: 1px solid #eee;
+
+}
+
+mat-card:hover .m-icon {
+	transform: translateY(-20px);
+}
