@@ -1,4 +1,4 @@
-const host = 'http://localhost:8082/cidenet-kardex/v1';
+const host = 'https://andrevs.com/cidenet-kardex/v1';
 export const environment = {
   production: false,
   login_endpoint: `${host}/login`,
