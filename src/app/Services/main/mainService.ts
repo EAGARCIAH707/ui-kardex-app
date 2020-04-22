@@ -36,10 +36,12 @@ export class MainService {
   protected extractData(res: HttpResponse<any>) {
     try {
       const token = res.headers.get('token');
+      console.log('Headers');
       if (token) {
         localStorage.setItem('token', token);
       }
     } catch (e) {
+      console.log('Not possible write token');
     }
     const body = res.body;
     return body || {};
