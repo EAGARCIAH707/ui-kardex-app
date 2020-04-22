@@ -56,6 +56,7 @@ export class KardexComponent implements OnInit {
   }
 
   changeProduct($event: any) {
+    this.recordsTable = [];
     this.selectProduct = $event;
     this.sales = $event.outList;
     this.purchased = $event.inList;

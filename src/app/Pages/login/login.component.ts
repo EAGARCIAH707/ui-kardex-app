@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.signInDTO).subscribe(res => {
       this.openSnackBar('Login Exitoso!', 'Ok');
       localStorage.setItem('token', res.body || undefined);
+      this.router.navigate(['/kardex']);
     }, (error: HttpErrorResponse) => {
       this.openSnackBar('Login Fallido', 'Fail');
     });
